@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>For my special one 🖤</title>
+
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel&family=Great+Vibes&display=swap" rel="stylesheet">
+
+  <style>
+    body {
+      margin: 0;
+      overflow: hidden;
+      background: black;
+      color: white;
+      font-family: 'Cinzel', serif;
+    }
+
+    /* INTRO */
+    #intro {
+      position: fixed;
+      width: 100%;
+      height: 100%;
+      background: black;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      z-index: 999;
+      animation: fadeOut 4s ease forwards;
+      animation-delay: 3s;
+    }
+
+    #intro h1 {
+      font-size: 28px;
+      color: #ff4d88;
+      text-shadow: 0 0 20px #ff4d88;
+      animation: zoom 3s ease;
+    }
+
+    @keyframes zoom {
+      from { transform: scale(0.8); opacity: 0; }
+      to { transform: scale(1); opacity: 1; }
+    }
+
+    @keyframes fadeOut {
+      to { opacity: 0; visibility: hidden; }
+    }
+
+    /* BACKGROUND */
+    .bg {
+      position: fixed;
+      width: 100%;
+      height: 100%;
+      background-image: url('bg.jpg');
+      background-size: cover;
+      background-position: center;
+      filter: brightness(0.35);
+      z-index: -5;
+    }
+
+    .overlay {
+      text-align: center;
+      padding-top: 80px;
+    }
+
+    h1 {
+      font-family: 'Great Vibes', cursive;
+      font-size: 45px;
+      text-shadow: 0 0 20px #ff4d88;
+    }
+
+    button {
+      padding: 12px 18px;
+      margin-top: 15px;
+      background: #ff4d88;
+      border: none;
+      border-radius: 10px;
+      color: white;
+      cursor: pointer;
+    }
+
+    input {
+      padding: 10px;
+      border-radius: 8px;
+      border: none;
+      text-align: center;
+    }
+
+    #mainContent {
+      display: none;
+    }
+
+    #letter {
+      width: 80%;
+      margin: auto;
+      margin-top: 20px;
+      font-size: 18px;
+      line-height: 1.7;
+      text-shadow: 0 0 10px #ff99cc;
+      min-height: 120px;
+    }
+
+    /* HEARTS */
+    .heart {
+      position: fixed;
+      bottom: -10px;
+      color: #ff4d88;
+      font-size: 16px;
+      animation: rise 6s linear infinite;
+    }
+
+    @keyframes rise {
+      0% { transform: translateY(0); opacity: 0; }
+      50% { opacity: 1; }
+      100% { transform: translateY(-110vh); opacity: 0; }
+    }
+
+    /* STARS */
+    .star {
+      position: absolute;
+      color: white;
+      font-size: 10px;
+      opacity: 0.6;
+      animation: floatUp 8s linear infinite;
+    }
+
+    @keyframes floatUp {
+      from { transform: translateY(100vh); }
+      to { transform: translateY(-10vh); }
+    }
+
+    canvas {
+      position: fixed;
+      top: 0;
+      left: 0;
+      z-index: -1;
+    }
+
+    #finalMessage {
+      position: fixed;
+      bottom: 20px;
+      width: 100%;
+      text-align: center;
+      font-size: 26px;
+      color: #ff4d88;
+      text-shadow: 0 0 20px #ff4d88;
+      font-weight: bold;
+    }
+  </style>
+</head>
+
+<body>
+
+<!-- INTRO -->
+<div id="intro">
+  <h1>For my special one</h1>
+</div>
+
+<div class="bg"></div>
+<canvas id="rain"></canvas>
+
+<div class="overlay">
+
+<!-- LOGIN -->
+<div id="login">
+  <h1>Enter Password 🖤</h1>
+  <input type="password" id="password">
+  <br>
+  <button onclick="checkPassword()">Enter</button>
+</div>
+
+<!-- MAIN -->
+<div id="mainContent">
+  <h1>For my wifey; Nur Ensyirah Adeeba 🖤</h1>
+
+  <button onclick="startLetter()">Letter for you</button>
+
+  <p id="letter"></p>
+
+  <audio id="music" loop>
+    <source src="song.mp3" type="audio/mpeg">
+  </audio>
+</div>
+
+</div>
+
+<div id="finalMessage">HAPPY 1 MONTH ANNIVERSARY ❤️</div>
+
+<script>
+let i = 0;
+
+/* YOUR MESSAGE */
+let text = `From the moment I met you Ensyirah, everything changed in my life . I’m really grateful to meet at my lowest point in my life , You always there for me when you sad and when I am happy . You know , syirah . I really planned to marry you . I never gotten this kind of love from anyone but you. I’m so happy and determined to be with you for the rest of my life and theres not one second of a regret in my thoughts when im with you yayang ❤️, almost every day in a month , we call and talk to each other and that was my favourite part . im willing to take care of you and stay with u thru everything even tho its hard or not despite your illness and you mental health . I will try my best to be with you and help u recover from your illness yayang <3. I just wanna make you happy and be there for you when u sad and Please sayang , dont hide your sadness from me ever , mengadu je dekat i , thats my function too okay ? anything that i need to know please just tell me . I’m sorry if i was abit harsh on you or making u mad or i ada tinggi suara dekat you . I was never a leaver or a cheater , so you dont have to worry about me leaving you since i wanna be your husband someday ❤️ Thank you Sayang .You make my days brighter and my life happier`;
+
+/* PASSWORD */
+function checkPassword() {
+  let pass = document.getElementById("password").value;
+
+  if (pass === "21/8") {
+    document.getElementById("login").style.display = "none";
+    document.getElementById("mainContent").style.display = "block";
+
+    let music = document.getElementById("music");
+    music.volume = 0.7;
+
+    music.play().catch(err => {
+      console.log("Autoplay blocked:", err);
+    });
+
+  } else {
+    alert("Wrong password 😢");
+  }
+}
+
+/* LETTER */
+function startLetter() {
+  document.getElementById("letter").innerHTML = "";
+  i = 0;
+  typeWriter();
+}
+
+function typeWriter() {
+  if (i < text.length) {
+    document.getElementById("letter").innerHTML += text.charAt(i);
+    i++;
+    setTimeout(typeWriter, 25);
+  }
+}
+
+/* HEARTS */
+setInterval(() => {
+  let h = document.createElement("div");
+  h.className = "heart";
+  h.innerHTML = "❤️";
+  h.style.left = Math.random()*100 + "vw";
+  document.body.appendChild(h);
+  setTimeout(()=>h.remove(),6000);
+}, 250);
+
+/* STARS */
+setInterval(() => {
+  let s = document.createElement("div");
+  s.className = "star";
+  s.innerHTML = "✦";
+  s.style.left = Math.random()*100 + "vw";
+  document.body.appendChild(s);
+  setTimeout(()=>s.remove(),8000);
+}, 200);
+
+/* RAIN */
+const canvas = document.getElementById("rain");
+const ctx = canvas.getContext("2d");
+canvas.width = window.innerWidth;
+canvas.height = window.innerHeight;
+
+let rain = [];
+
+for (let i = 0; i < 120; i++) {
+  rain.push({
+    x: Math.random()*canvas.width,
+    y: Math.random()*canvas.height,
+    s: Math.random()*10 + 5
+  });
+}
+
+function draw() {
+  ctx.clearRect(0,0,canvas.width,canvas.height);
+  ctx.strokeStyle = "rgba(255,255,255,0.15)";
+  ctx.beginPath();
+
+  for (let r of rain) {
+    ctx.moveTo(r.x, r.y);
+    ctx.lineTo(r.x+1, r.y+r.s);
+    r.y += r.s;
+
+    if (r.y > canvas.height) {
+      r.y = -10;
+      r.x = Math.random()*canvas.width;
+    }
+  }
+
+  ctx.stroke();
+}
+
+setInterval(draw, 30);
+</script>
+
+</body>
+</html>
